@@ -8,23 +8,17 @@ class Solution:
         x[左] > x[右]
         """
         # write your code here
-        if nums[0] == nums[-1]:
-            res = nums[0]
-            for n in nums:
-                res = min(n, res)
-            return res
-
         if nums[0] < nums[-1]:
             return nums[0]
 
         l = 0
         r = len(nums) - 1
-        while l < r - 1:
+        while l < r:
             mid = (l + r) // 2
-            if nums[mid] > nums[r]:
-                l = mid
+            if nums[mid] >= nums[0]:
+                l = mid + 1
             else:
                 r = mid
-        return min(nums[l], nums[r])
+        return nums[l]
 
-# Solution().findMin([2,1])
+print(Solution().findMin([4,3]))
